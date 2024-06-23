@@ -1,12 +1,15 @@
+import {Link, useNavigate} from "react-router-dom"
+
 import { useSelector } from "react-redux";
 
 function Home() {
+  const navigate = useNavigate();
   const users = useSelector((state) => state.users);
   console.log(users);
   return (
     <div className="container">
       <h2>Crud app with JSON SERVER</h2>
-      <button className="btn btn-success my-3">Create +</button>
+      <Link to="/creat e" className="btn btn-success my-3">Create +</Link>
       <table className="table">
         <thead>
           <tr>
@@ -23,7 +26,7 @@ function Home() {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td className="">
-                <button className="btn btn-sm btn-primary">Edit</button>
+                <Link to={`/edit/${user.id}`} className="btn btn-sm btn-primary">Edit</Link>
                 <button className="btn btn-sm btn-danger ms-52">Delete</button>
               </td>
             </tr>
